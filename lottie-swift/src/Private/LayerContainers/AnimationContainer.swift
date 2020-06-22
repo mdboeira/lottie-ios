@@ -47,35 +47,35 @@ final class AnimationContainer: CALayer {
   
   func logHierarchyKeypaths() {
     print("Lottie: Logging Animation Keypaths")
-    animationLayers.forEach({ $0.logKeypaths(for: nil) })
+//    animationLayers.forEach({ $0.logKeypaths(for: nil) })
   }
   
   func setValueProvider(_ valueProvider: AnyValueProvider, keypath: AnimationKeypath) {
     for layer in animationLayers {
-      if let foundProperties = layer.nodeProperties(for: keypath) {
-        for property in foundProperties {
-          property.setProvider(provider: valueProvider)
-        }
-        layer.displayWithFrame(frame: presentation()?.currentFrame ?? currentFrame, forceUpdates: true)
-      }
+//      if let foundProperties = layer.nodeProperties(for: keypath) {
+//        for property in foundProperties {
+//          property.setProvider(provider: valueProvider)
+//        }
+//        layer.displayWithFrame(frame: presentation()?.currentFrame ?? currentFrame, forceUpdates: true)
+//      }
     }
   }
   
   func getValue(for keypath: AnimationKeypath, atFrame: CGFloat?) -> Any? {
     for layer in animationLayers {
-      if let foundProperties = layer.nodeProperties(for: keypath),
-        let first = foundProperties.first {
-        return first.valueProvider.value(frame: atFrame ?? currentFrame)
-      }
+//      if let foundProperties = layer.nodeProperties(for: keypath),
+//        let first = foundProperties.first {
+//        return first.valueProvider.value(frame: atFrame ?? currentFrame)
+//      }
     }
     return nil
   }
   
   func layer(for keypath: AnimationKeypath) -> CALayer? {
     for layer in animationLayers {
-      if let foundLayer = layer.layer(for: keypath) {
-        return foundLayer
-      }
+//      if let foundLayer = layer.layer(for: keypath) {
+//        return foundLayer
+//      }
     }
     return nil
   }
@@ -83,9 +83,9 @@ final class AnimationContainer: CALayer {
   func animatorNodes(for keypath: AnimationKeypath) -> [AnimatorNode]? {
     var results = [AnimatorNode]()
     for layer in animationLayers {
-      if let nodes = layer.animatorNodes(for: keypath) {
-        results.append(contentsOf: nodes)
-      }
+//      if let nodes = layer.animatorNodes(for: keypath) {
+//        results.append(contentsOf: nodes)
+//      }
     }
     if results.count == 0 {
       return nil
